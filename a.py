@@ -5,7 +5,7 @@ from bokeh.util import session_id
 app = Flask(__name__)
 
 def check_auth(username, password):
-    return username == 'valid_user' and password == 'valid_password'
+    return username == 'jcarbone' and password == 'password'
 
 def authenticate():
     """Sends a 401 response that enables basic auth"""
@@ -27,7 +27,7 @@ def requires_auth(f):
 @requires_auth
 def redirect_to_bokeh():
     s_id = session_id.generate_session_id()
-    return redirect("http://<bokeh-server-addr>:<port>/?bokeh-session-id={}".format(s_id), code=302)
+    return redirect("http://localhost:5006/iris_kmeans/?bokeh-session-id={}".format(s_id), code=302)
 
 if __name__ == "__main__":
     app.run()

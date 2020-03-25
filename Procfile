@@ -1,1 +1,3 @@
-web: panel serve --address="0.0.0.0" --port=$PORT iris_kmeans.py --allow-websocket-origin=heroku-panel-test.herokuapp.com
+release: export BOKEH_SECRET_KEY=iFObNc3skYa6qZJSjutYrwRHNmM7uxuok4IYiBZNS9nk
+release: export BOKEH_SIGN_SESSIONS=True
+web: bokeh serve --address="0.0.0.0" --port=$PORT iris_kmeans.py --allow-websocket-origin=heroku-panel-test.herokuapp.com --session-ids external-signed
