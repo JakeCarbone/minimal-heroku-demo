@@ -3,7 +3,7 @@ from flask import request, Response, redirect, Flask
 from bokeh.util import token
 
 # s_id = token.generate_session_id()
-
+#
 # print(s_id)
 
 app = Flask(__name__)
@@ -31,7 +31,9 @@ def requires_auth(f):
 @requires_auth
 def redirect_to_bokeh():
     s_id = token.generate_session_id()
-    return redirect("http://localhost:5006/iris_kmeans/?bokeh-session-id={}".format(s_id), code=302)
+    return redirect("http://localhost:5006/Panel_App/?bokeh-session-id={}".format(s_id), code=302)
+
+# http://localhost:5006/iris_kmeans/?bokeh-session-id=d0ffGAz8PPWOXeVo7S6uTY22MBGiOJ11HakIA76gFb0D
 
 if __name__ == "__main__":
     app.run()
