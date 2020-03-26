@@ -32,7 +32,7 @@ def get_clusters(x, y, n_clusters):
 pn.Column(
     '# Iris K-Means Clustering',
     pn.Row(pn.WidgetBox(x, y, n_clusters), get_clusters)
-).show() #.servable()
+).servable()
 
 
 # In[ ]:
