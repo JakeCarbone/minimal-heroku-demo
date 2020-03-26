@@ -2,6 +2,10 @@ from functools import wraps
 from flask import request, Response, redirect, Flask
 from bokeh.util import token
 
+# s_id = token.generate_session_id()
+
+# print(s_id)
+
 app = Flask(__name__)
 
 def check_auth(username, password):
@@ -26,7 +30,7 @@ def requires_auth(f):
 @app.route('/')
 @requires_auth
 def redirect_to_bokeh():
-    s_id = token.generate_secret_key()
+    s_id = token.generate_session_id()
     return redirect("http://localhost:5006/iris_kmeans/?bokeh-session-id={}".format(s_id), code=302)
 
 if __name__ == "__main__":
